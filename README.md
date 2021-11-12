@@ -1,4 +1,4 @@
-# Stoke Prediction
+# Stroke Prediction
 
 ### Table of Contents
 ---
