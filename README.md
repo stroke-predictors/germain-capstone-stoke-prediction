@@ -133,33 +133,23 @@ The primary focus of the project was to incorporate clustering methodologies and
 
 Following acquisition and preparation of the initial SQL database, the DataFrames used in this project contain the following variables. Contained values are defined along with their respective data types.
 
-| Variable                     | Definition                                         | Data Type  |
-|:----------------------------:|:--------------------------------------------------:|:----------:|     
-| bathroomcnt                  | count of bathrooms                                 | float64    |
-| bedroomcnt                   | count of bedrooms                                  | float64    |
-| buildingqualitytypeid        | the building struture quality                      | float64    |
-| calculatedfinishedsquarefeet | finished structure_square_feet                     | float64    |
-| fips.                        | Federal Information Processing Standards,          |            |
-|                              | unique county code                                 | float64    |
-| latitude                     | Property latitudinal location                      | float64    |
-| longitude                    | Property longitudinal locatio                      | float64    |
-| lotsizesquarefeet            | size of the lot in square feet                     | float64    |
-| rawcensustractandblock       | statistical subdivisions of a county               | float64    |
-| regionidcity                 | metropolitan area id for a city                    | float64    |
-| log_error *                  | difference of log(Zestimate) and log(SalePrice)    | float64    |
-| regionidcounty               | metropolitan area id for a county                  | float64    |
-| regionidzip                  | metropolitan area id for a zipcode                 | float64    |
-| roomcnt                      | total number of rooms                              | float64    |
-| unitcnt                      | how many single family units                       | float64    |
-| yearbuilt                    | year the property was built.                       | float64    |
-| structuretaxvaluedollarcnt   | vaule of the structure by taxing district          | float64    |
-| taxvaluedollarcnt            | value of property in entirety in U.S. dollars      | float64    |
-| assessmentyear               | year the tax was assessed                          | float64    |
-| landtaxvaluedollarcnt        | value of the land                                  | float64    |
-| taxamount                    | most recent tax payment from property owner        | float64    |
-| transactiondate              | most recent date of property sale                  | object     |
-| heatingorsystemdesc          | type of heating system used                        | object     |
-| county                       | the county the property is in                      | object     |    
+| Feature               | Datatype      | Description                                          |
+|:----------------------|:--------------|:-----------------------------------------------------|
+| id                    | int64         | Unique ID                                            |
+| gender                | object        | Male/ Female                                         |
+| age                   | float         | Applicant age                                        |
+| hypertension          | int64         | 0- If no hypertension, 1- If hypertension indicated  |         
+| heart_disease         | int           | 0- If no heart disease, 1- If heart disease indicated|
+| ever_married          | object        | Yes/No                                               | 
+| work_type             | object        | Government job/ Self-employed/ Private/ Children     |       
+| residence_type        | object        | Rural/ Urban                                         |
+| avg_glucose_level     | float         | Number indicating their glucose level                |
+| bmi                   | float         | Number indicating bmi score                          |
+| smoking_status        | object        | Formerly smoked, Never smoked, Smokes, Unknown       |       
+| stroke                | object        | 0- If no stroke 1- If stroke indicated               |           
+|                       |               |                                                      |
+
+   
 
 * Target variable
 
