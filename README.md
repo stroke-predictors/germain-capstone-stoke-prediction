@@ -167,7 +167,7 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
     - Use at least 3 combinations of features
     - Document takeaways of each clustering venture
     - Create new features with clusters if applicable
-- [x Perform statistical tests
+- [] Perform statistical tests
 - [] Decide upon features and models to be used
 
 #### 5. Modeling & Evaluation
