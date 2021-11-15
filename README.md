@@ -40,7 +40,8 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 
 #### 1. Description
 
-Identify stroke factors, build a predictive model that performs better than a baseline classification prediction.
+
+Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
 
 #### 2. Deliverables
 
@@ -200,5 +201,5 @@ The created modules used in this project below contain full comments an docstrin
 
 To recreate and reproduce results of this project, you will need to
 
-[[Return to Top]](#stroke-predictions)
+[[Return to Top]](#stroke-prediction)
 
