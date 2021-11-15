@@ -7,7 +7,7 @@ I.   [Project Overview             ](#i-project-overview)
 1.   [Description                  ](#1-description)
 2.   [Deliverables                 ](#2-deliverables)
 
-II.  [Executive Summary  ](#ii-executive-summary)
+II.  [Executive Summary             ](#ii-executive-summary)
 1.   [Goals:                        ](#1-goals)
 2.   [Key Findings:                 ](#2-key-findings)
 3.   [Recommendations:              ](#1-recommendations)
@@ -40,40 +40,34 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 
 #### 1. Description
 
-The primary focus of the project was to incorporate clustering methodologies and discover potential drivers of the log_error of the Zillow® Zestimate focusing on single unit / single-family homes, using the 2017 properties and predictions data. In this context, log_error is equal to 𝑙𝑜𝑔(𝑍𝑒𝑠𝑡𝑖𝑚𝑎𝑡𝑒) − 𝑙𝑜𝑔(𝑆𝑎𝑙𝑒𝑃𝑟𝑖𝑐𝑒). I will present my findings and drivers of the log error through a notebook walkthough to my datascience team.
 
-- What is driving the errors in the Zestimates?
-- This notebook will be a continuation of my regression modeling. I am adding clustering methodologies to see what kind of improvements we can make.
+Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
 
 #### 2. Deliverables
 
-- Final Report Notebook detailing all of my findings and methodologies.
-- Sections indicated with markdown headings in my final notebook with a good title and the documentation is sufficiently explanatory and of high quality
-- A Python module or modules that automate the data acquisistion and preparation process, imported and used in final notebook
-- README file that details the project specs, planning, key findings, and steps to reproduce
-
-
+- Slides for project presentation.
+- Final Report Notebook detailing all of the team's findings and methodologies.
+- Sections indicated with markdown headings in the team's final notebook with a good title and the documentation is sufficiently explanatory and of high quality.
+- A Python module or modules that automate the data acquisistion and preparation process, imported and used in final notebook.
+- README file that details the project specs, planning, key findings, and steps to reproduce.
+- Presentation by the team on the findings that is under 10 minutes.
 
 ### II. Executive Summary
 ---
 
 #### 1. Goals:
 
-- Incorporate clustering methodologies and discover potential drivers of the log_error of the Zillow® Zestimate for single-unit properties sold during 2017. In this context, log_error is equal to 𝑙𝑜𝑔(𝑍𝑒𝑠𝑡𝑖𝑚𝑎𝑡𝑒) − 𝑙𝑜𝑔(𝑆𝑎𝑙𝑒𝑃𝑟𝑖𝑐𝑒). 
+- Incorporate classification methodologies and discover potential drivers of stroke using eleven clinical features for predicting stroke events.
 - Create modules storing functions of each step of the data pipeline
 - Thoroughly document each step
-- Construct at least 4 models
+- Construct models
 - Make sure project is reproduceable
 
 #### 2. Key findings:
-- The tests rejected all four Null Hypothesis
-- There is a relationship between these features and logerror
-- The 2nd Degree Ploynomial regression model performed the best, predict sale values thus reducing logerror, but only by 0.00016
+- 
 
 #### 3. Recommendations:
-- It seemed that in my hypothesis testing that the tests I performed had correlation, but when models were tested, they proved to be too week to be strong drivers or provide any insights
-- I would like to continue to look into other features to use for clusters (such as age vs sqft)
-- I would like to perform more testing to find better models to use to determine logerror
+- I
 
 ---
 
@@ -81,49 +75,32 @@ The primary focus of the project was to incorporate clustering methodologies and
 
 #### 1. Questions & Hypothesis
 
-- Is there a correlation between logerror and bathroom count
-- Is there a correlation between logerror and lot size square feet
-- Is there a correlation between logerror and calculated finished square feet
-- Is there a relationship between logerror and bedroom count
+- What age group is most at risk?
+- What drivers affect stroke?
+- Are people over 65 significantly more likely to have a stroke?
+- Are men more likely to have strokes?
+- What pre-existing conditions have a correlation to a stroke?  (hypertension, heart_disease)
 
+## Initial Hypotheses
+### Hypothesis 1: Correlation Test (Stroke vs Age Group)
+- $H_o$: There is no relationship between age group and risk of stroke.
+- $H_a$: There is a relationship between age group and risk of stroke.
 
-## Hypothesis 1: Correlation Test (Logerror vs Bathroomcnt)
-- $H_o$: There is no correlation between logerror and taxamount
-- $H_a$: There ia a correlation between logerror and taxamount
+### Hypothesis 2: Correlation Test (Stroke vs < 65)
+- $H_o$: People over 65 years old are not more likely to have a stroke than people under 65.
+- $H_a$: People over 65 years old are more likely to have a stroke than people under 65.
 
-## Hypothesis 2: Correlation Test (Logerror vs Lot size squarefeet)
-- $H_o$: There is no correlation between logerror and lotsizesquarefeet
-- $H_a$: There is a correlation between logerror and lotsizesquarefeet
+### Hypothesis 3: Correlation Test (Stroke vs Don't Smoke)
+- $H_o$: People that currently smoke do not have a higher risk of stroke than people that don’t currently smoke.
+- $H_a$: People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
 
-## Hypothesis 3: Correlation Test ( Logerror vs Calculated finished square feet)
-- $H_o$: There is no correlation between logerror and calculatedfinishedsquarefeet
-- $H_a$: There is a correlation between logerror and calculatedfinishedsquarefeet
-
-## Hypothesis 4: T-Test (Logerror vs Bedroomcnt)
-- $H_o$: There is no relationship between logerror and bedroomcnt
-- $H_a$: There is a relationship between logerror and bedroomcnt
-
-
+### Hypothesis 4: Correlation Test (Stroke vs Men)
+- $H_o$: Men are not more at risk for stroke than women.
+- $H_a$: Men are more at risk for stroke than women.
 
 ### 2. Findings
 #### My findings are:
-- The tests rejected all four Null Hypothesis
-- There is a relationship between these features and logerror
-- The 2nd Degree Ploynomial regression model performed the best
-
-| Model                            | rmse_train  | rmse_validate |
-|----------------------------------|:-----------:|---------------|
-|mean_baseline                     | 0.16828     | 0.15740       |
-|1. OLS                            | 0.16813     | 0.15738       |
-|2. LassoLars (alpha 2)            | 0.16828     | 0.15740       |
-|3. Polynomial Regression(degree=2)| 0.16806     | 0.15743       |
-|4. OLS (Unscaled Data)            | 0.16813     | 0.15738       |
-
-- RMSE for Polynomial Model, degrees=2
-  - Training/In-Sample:  0.16812589644110204 
-  - Validation/Out-of-Sample:  0.16581584996771273
-  
-- It seemed that in my hypothesis testing that the tests I performed had correlation, but when models were tested, they proved to be too week to be strong drivers or provide any insights
+- 
 
 
 ### IV. Data Context
@@ -131,41 +108,29 @@ The primary focus of the project was to incorporate clustering methodologies and
 
 #### 1. Data Dictionary
 
-Following acquisition and preparation of the initial SQL database, the DataFrames used in this project contain the following variables. Contained values are defined along with their respective data types.
+Following acquisition and preparation of the initial Kaggle dataset, the DataFrames used in this project contain the following variables. Contained values are defined along with their respective data types.
 
-| Variable                     | Definition                                         | Data Type  |
-|:----------------------------:|:--------------------------------------------------:|:----------:|     
-| bathroomcnt                  | count of bathrooms                                 | float64    |
-| bedroomcnt                   | count of bedrooms                                  | float64    |
-| buildingqualitytypeid        | the building struture quality                      | float64    |
-| calculatedfinishedsquarefeet | finished structure_square_feet                     | float64    |
-| fips.                        | Federal Information Processing Standards,          |            |
-|                              | unique county code                                 | float64    |
-| latitude                     | Property latitudinal location                      | float64    |
-| longitude                    | Property longitudinal locatio                      | float64    |
-| lotsizesquarefeet            | size of the lot in square feet                     | float64    |
-| rawcensustractandblock       | statistical subdivisions of a county               | float64    |
-| regionidcity                 | metropolitan area id for a city                    | float64    |
-| log_error *                  | difference of log(Zestimate) and log(SalePrice)    | float64    |
-| regionidcounty               | metropolitan area id for a county                  | float64    |
-| regionidzip                  | metropolitan area id for a zipcode                 | float64    |
-| roomcnt                      | total number of rooms                              | float64    |
-| unitcnt                      | how many single family units                       | float64    |
-| yearbuilt                    | year the property was built.                       | float64    |
-| structuretaxvaluedollarcnt   | vaule of the structure by taxing district          | float64    |
-| taxvaluedollarcnt            | value of property in entirety in U.S. dollars      | float64    |
-| assessmentyear               | year the tax was assessed                          | float64    |
-| landtaxvaluedollarcnt        | value of the land                                  | float64    |
-| taxamount                    | most recent tax payment from property owner        | float64    |
-| transactiondate              | most recent date of property sale                  | object     |
-| heatingorsystemdesc          | type of heating system used                        | object     |
-| county                       | the county the property is in                      | object     |    
+| Feature               | Datatype      | Description                                          |
+|:----------------------|:--------------|:-----------------------------------------------------|
+| id                    | int64         | Unique ID                                            |
+| gender                | object        | Male/ Female                                         |
+| age                   | float         | Applicant age                                        |
+| hypertension          | int64         | 0- If no hypertension, 1- If hypertension indicated  |         
+| heart_disease         | int           | 0- If no heart disease, 1- If heart disease indicated|
+| ever_married          | object        | Yes/No                                               | 
+| work_type             | object        | Government job/ Self-employed/ Private/ Children     |       
+| residence_type        | object        | Rural/ Urban                                         |
+| avg_glucose_level     | float         | Number indicating their glucose level                |
+| bmi                   | float         | Number indicating bmi score                          |
+| smoking_status        | object        | Formerly smoked, Never smoked, Smokes, Unknown       |       
+| stroke                | object        | 0- If no stroke 1- If stroke indicated               |           
+|                       |               |                                                      |
 
-* Target variable
+   
 
 ### V. Process
 ---
-- See my Trello board [Stroke Prediction](https://trello.com/b/9KkRcl2I/stroke-prediction)
+- See the team's Trello board [Stroke Prediction](https://trello.com/b/9KkRcl2I/stroke-prediction)
 
 #### 1. Project Planning
 ✓ 🟢 **Plan** ➜ ☐ _Acquire_ ➜ ☐ _Prepare_ ➜ ☐ _Explore_ ➜ ☐ _Model_ ➜ ☐ _Deliver_
@@ -180,7 +145,7 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 #### 2. Data Acquisition
 ✓ _Plan_ ➜ 🟢 **Acquire** ➜ ☐ _Prepare_ ➜ ☐ _Explore_ ➜ ☐ _Model_ ➜ ☐ _Deliver_
 
-- [] Obtain initial data and understand its structure
+- [x] Obtain initial data and understand its structure
     - Obtain data from Kaggle - https://www.kaggle.com/fedesoriano/stroke-prediction-dataset
 - [] Remedy any inconsistencies, duplicates, or structural problems within data
 - [] Perform data summation
@@ -203,7 +168,7 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
     - Use at least 3 combinations of features
     - Document takeaways of each clustering venture
     - Create new features with clusters if applicable
-- [x Perform statistical tests
+- [] Perform statistical tests
 - [] Decide upon features and models to be used
 
 #### 5. Modeling & Evaluation
@@ -229,22 +194,12 @@ Following acquisition and preparation of the initial SQL database, the DataFrame
 ### VI. Modules
 ---
 
-The created modules used in this project below contain full comments an docstrings to better understand their operation. Where applicable, all functions used `random_state=123` at all times. Use of functions requires access credentials to the Codeup database and an additional module named `env.py`. See project reproduction for more detail.
-
-- [`acquire`](https://raw.githubusercontent.com/randyfrench/clustering-project-zillow/main/acquire.py): contains functions used in initial data acquisition leading into the prepare phase
-- [`wrangle_zillow`](https://raw.githubusercontent.com/randyfrench/clustering-project-zillow/main/wrangle_zillow.py): contains functions to prepare data in the manner needed for this specific project needs
+The created modules used in this project below contain full comments an docstrings to better understand their operation.
 
 ### VII. Project Reproduction
 ---
 
-To recreate and reproduce results of this project, you will need to create a module named `env.py`. This file will need to contain login credentials for the Codeup database server stored in their respective variables named `host`, `username`, and `password`. You will also need to create the following function within. This is used in all functions that acquire data from the SQL server to create the URL for connecting. `db` needs to be passed as a string that matches exactly with the name of a database on the server.
+To recreate and reproduce results of this project, you will need to
 
-```py
-def get_connection(db_name):
-    return f'mysql+pymysql://{username}:{password}@{host}/{db}'
-```
-
-After its creation, ensure this file is not uploaded or leaked by ensuring git does not interact with it by using gitignore. When using any function housed in the created modules above, ensure full reading of comments and docstrings to understand its proper use and passed arguments or parameters.
-
-[[Return to Top]](#finding-drivers-of-zestimate-errors)
+[[Return to Top]](#stroke-prediction)
 
