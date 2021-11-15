@@ -108,7 +108,7 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 #### 1. Data Dictionary
 
-Following acquisition and preparation of the initial Kaggle database, the DataFrames used in this project contain the following variables. Contained values are defined along with their respective data types.
+Following acquisition and preparation of the initial Kaggle dataset, the DataFrames used in this project contain the following variables. Contained values are defined along with their respective data types.
 
 | Feature               | Datatype      | Description                                          |
 |:----------------------|:--------------|:-----------------------------------------------------|
