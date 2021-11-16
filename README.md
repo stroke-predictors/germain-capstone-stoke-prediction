@@ -84,8 +84,8 @@ You know, every 40 seconds someone in the United States has a stroke. And, one i
 
 ## Initial Hypotheses
 ### Hypothesis 1: Correlation Test (Stroke vs Age Group)
-- $H_{0}$: There is no relationship between age group and risk of stroke.
-- $H_{a}$: There is a relationship between age group and risk of stroke.
+- $H_{0}$ : There is no relationship between age group and risk of stroke.
+- $H_{a}$ : There is a relationship between age group and risk of stroke.
 
 ### Hypothesis 2: Correlation Test (Stroke vs < 65)
 - $H_{0}$: People over 65 years old are not more likely to have a stroke than people under 65.
