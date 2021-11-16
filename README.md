@@ -84,20 +84,20 @@ You know, every 40 seconds someone in the United States has a stroke. And, one i
 
 ## Initial Hypotheses
 ### Hypothesis 1: Correlation Test (Stroke vs Age Group)
-$H_{o}$: There is no relationship between age group and risk of stroke.
-- $Ha$ : There is a relationship between age group and risk of stroke.
+- $H_{0}$: There is no relationship between age group and risk of stroke.
+- $H_{a}$: There is a relationship between age group and risk of stroke.
 
 ### Hypothesis 2: Correlation Test (Stroke vs < 65)
-- $Ho$ : People over 65 years old are not more likely to have a stroke than people under 65.
-- $Ha$ : People over 65 years old are more likely to have a stroke than people under 65.
+- $H_{0}$: People over 65 years old are not more likely to have a stroke than people under 65.
+- $H_{a}$: People over 65 years old are more likely to have a stroke than people under 65.
 
 ### Hypothesis 3: Correlation Test (Stroke vs Don't Smoke)
-- $Ho$ : People that currently smoke do not have a higher risk of stroke than people that don’t currently smoke.
-- $Ha$ : People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
+- $H_{0}$: People that currently smoke do not have a higher risk of stroke than people that don’t currently smoke.
+- $H_{a}$: People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
 
 ### Hypothesis 4: Correlation Test (Stroke vs Men)
-- $Ho$ : Men are not more at risk for stroke than women.
-- $Ha$ : Men are more at risk for stroke than women.
+- $H_{0}$: Men are not more at risk for stroke than women.
+- $H_{a}$: Men are more at risk for stroke than women.
 
 ### 2. Findings
 #### My findings are:
