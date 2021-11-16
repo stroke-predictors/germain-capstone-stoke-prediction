@@ -73,6 +73,14 @@ def classification_shotgun(X_insample, y_insample, X_outsample, y_outsample):
 
 # -------------------------- the models -------------------------- #
 
+def manual_baseline(y_insample, y_outsample, baseline_value):
+    """ Add a column for the manually-selected baseline prediction """
+    # set each value to the chosen baseline value
+    y_insample['manual_baseline'] = baseline_value
+    y_outsample['manual_baseline'] = baseline_value
+
+    return y_insample, y_outsample # return df with baseline predictions column
+
 def classification_bl(y_insample, y_outsample):
     """ Calculate baseline using mode class for model comparison """
     # find baseline
@@ -93,8 +101,8 @@ def decisiontree(X_insample, y_insample, X_outsample, y_outsample):
         tree = DecisionTreeClassifier(max_depth=depth, random_state=123)\
             .fit(X_insample, y_insample.in_actuals)
         # make predictions in new columns
-        y_insample['cv_tree_maxdepth' + str(depth)] = tree.predict(X_insample)
-        y_outsample['cv_tree_maxdepth' + str(depth)] = tree.predict(X_outsample)
+        y_insample['tree_maxdepth' + str(depth)] = tree.predict(X_insample)
+        y_outsample['tree_maxdepth' + str(depth)] = tree.predict(X_outsample)
 
     return y_insample, y_outsample # return dataframe with predictions appended
 
