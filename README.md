@@ -42,6 +42,7 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 
 
 Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
+You know, every 40 seconds someone in the United States has a stroke. And, one in every 6 cardiovascular disease deaths comes from stroke. Our team wants to reduce these numbers. We’re analyzing health data to identify the factors that are closely linked to risk of stroke. We’re also building models that predict whether a person is at risk of stroke.
 
 #### 2. Deliverables
 
