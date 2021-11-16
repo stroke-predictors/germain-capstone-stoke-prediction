@@ -14,7 +14,7 @@ def prep_data(df): # takes in dataFrame object
     df['age_range'] = pd.cut(x=df.age, bins=five_year_cutpoints).astype('string') # new column 'age_range' created, cuts 'age' by bins from 'five_year_cutpoints'
 
     # replaces ', ' with '-' for the values in age_range
-    df['age_range'] = df['age_range'].str[1:-1]\ 
+    df['age_range'] = df['age_range'].str[1:-1]\
                     .str.replace(', ', '-')\
                     .astype('object')
 
@@ -30,8 +30,8 @@ def prep_data(df): # takes in dataFrame object
     df.rename(columns={'Residence_type':'residence_type'}, inplace=True)
     
     # creates dummies using columns from df
-    modeling_df = pd.get_dummies(df, drop_first=True)
+    # modeling_df = pd.get_dummies(df, drop_first=True)
 
-    return df, modeling_df
+    return df
 
     
