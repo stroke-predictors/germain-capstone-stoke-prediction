@@ -6,11 +6,15 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.impute import SimpleImputer
+
 # ------------------------- print results ------------------------- #
 
-def print_nlp_results(y_insample, y_outsample):
+def print_classification_results(y_insample, y_outsample):
     """ Takes in a dataframe with column-separated model predictions, 
-        Calculates accuracy of each model (loops columns) for in- and out-sample data,
+        Calculates accuracy and recall of each model (loops columns) for in- and out-sample data,
         Appends all results to running dataframe, 
         Returns dataframe. """
     # create empty results dataframe
@@ -20,10 +24,22 @@ def print_nlp_results(y_insample, y_outsample):
         # calculate model accuracy
         in_accuracy = (y_insample[model] == y_insample.in_actuals).mean()
         out_accuracy = (y_outsample[model] == y_outsample.out_actuals).mean()
+        # determine sums of true positives and false negatives for recall calculation
+            # true positive: model correctly predicts 1 when actual is 1
+            # false negative: model wrongly predicts 0 when actual is 1
+        in_true_positive = ((y_insample[model] == 1) & (y_insample['in_actuals'] == 1)).sum()
+        in_false_negative = ((y_insample[model] == 0) & (y_insample['in_actuals'] == 1)).sum()
+        out_true_positive = ((y_outsample[model] == 1) & (y_outsample['out_actuals'] == 1)).sum()
+        out_false_negative = ((y_outsample[model] == 0) & (y_outsample['out_actuals'] == 1)).sum()
+        # calculate recall scores
+        in_recall = in_true_positive / (in_true_positive + in_false_negative)
+        out_recall = out_true_positive / (out_true_positive + out_false_negative)
         # add results to new row in dataframe
         running_df = running_df.append({'Model':model,
                                         'InSample_Accuracy':in_accuracy, 
-                                        'OutSample_Accuracy':out_accuracy},
+                                        'OutSample_Accuracy':out_accuracy,
+                                        'InSample_Recall':in_recall,
+                                        'OutSample_Recall':out_recall},
                                          ignore_index=True)
 
     return running_df # return results dataframe
@@ -111,7 +127,7 @@ def logisticregression(X_insample, y_insample, X_outsample, y_outsample):
 def naivebayes(X_insample, y_insample, X_outsample, y_outsample):
     """ Creates Naive-Bayes with var_smoothing of .001, .01, 10, 100 """
     # set loop list
-    smooth_levels = [.001, .01, 10, 100]
+    smooth_levels = [.000000001, .00000001, .0000001, .000001, .00001, .0001, .001, .01, 10, 100]
     # loop through smoothing levels
     for smooth_level in smooth_levels:
         # create naive bayes model
@@ -137,3 +153,18 @@ def knearestneighbors(X_insample, y_insample, X_outsample, y_outsample):
         y_outsample['knn_n' + str(neighbor_count)] = knn.predict(X_outsample)
     
     return y_insample, y_outsample # return dataframe with preds appended
+
+# ------------------------- scaler ------------------------- #
+
+def Min_Max_Scaler(X_train, X_validate, X_test):
+    """
+    Takes in X_train, X_validate and X_test dfs with numeric values only
+    Returns scaler, X_train_scaled, X_validate_scaled, X_test_scaled dfs
+    """
+    #Fit the thing
+    scaler = MinMaxScaler().fit(X_train)
+    #transform the thing
+    X_train_scaled = pd.DataFrame(scaler.transform(X_train), index = X_train.index, columns = X_train.columns)
+    X_validate_scaled = pd.DataFrame(scaler.transform(X_validate), index = X_validate.index, columns = X_validate.columns)
+    X_test_scaled = pd.DataFrame(scaler.transform(X_test), index = X_test.index, columns = X_test.columns)
+    return scaler, X_train_scaled, X_validate_scaled, X_test_scaled
