@@ -163,11 +163,6 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
 
 - [] Visualize relationships of variables
 - [] Formulate hypotheses
-- [] Use clustering methodology in exploration of data
-    - Perform statistical testing and visualization
-    - Use at least 3 combinations of features
-    - Document takeaways of each clustering venture
-    - Create new features with clusters if applicable
 - [] Perform statistical tests
 - [] Decide upon features and models to be used
 
