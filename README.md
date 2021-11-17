@@ -6,6 +6,7 @@
 I.   [Project Overview             ](#i-project-overview)
 1.   [Description                  ](#1-description)
 2.   [Deliverables                 ](#2-deliverables)
+3.   [Team Members                 ](#3-team-members)
 
 II.  [Executive Summary             ](#ii-executive-summary)
 1.   [Goals:                        ](#1-goals)
@@ -53,6 +54,14 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 - A Python module or modules that automate the data acquisistion and preparation process, imported and used in final notebook.
 - README file that details the project specs, planning, key findings, and steps to reproduce.
 - Presentation by the team on the findings that is under 10 minutes.
+
+#### 3. Team Members
+
+- Jacob Paxton
+- Carolyn Davis
+- Sarah Woods
+- Elihezer Lopez
+- Randy French
 
 ### II. Executive Summary
 ---
