@@ -10,6 +10,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import SimpleImputer
 
+from imblearn.combine import SMOTETomek 
+
 # ------------------------- print results ------------------------- #
 
 def print_classification_results(y_insample, y_outsample):
@@ -84,7 +86,7 @@ def manual_baseline(y_insample, y_outsample, baseline_value):
 def classification_bl(y_insample, y_outsample):
     """ Calculate baseline using mode class for model comparison """
     # find baseline
-    mode = y_insample.in_actuals.mode().item()
+    mode = y_insample.in_actuals.mode().tolist()[0]
     # set baseline as prediction
     y_insample['baseline'] = mode
     y_outsample['baseline'] = mode
@@ -162,7 +164,7 @@ def knearestneighbors(X_insample, y_insample, X_outsample, y_outsample):
     
     return y_insample, y_outsample # return dataframe with preds appended
 
-# ------------------------- scaler ------------------------- #
+# ------------------------- pre-processing ------------------------- #
 
 def Min_Max_Scaler(X_train, X_validate, X_test):
     """
@@ -176,3 +178,15 @@ def Min_Max_Scaler(X_train, X_validate, X_test):
     X_validate_scaled = pd.DataFrame(scaler.transform(X_validate), index = X_validate.index, columns = X_validate.columns)
     X_test_scaled = pd.DataFrame(scaler.transform(X_test), index = X_test.index, columns = X_test.columns)
     return scaler, X_train_scaled, X_validate_scaled, X_test_scaled
+
+def smoter(X_train, y_train):
+    """ Use SMOTE+Tomek to eliminate class imbalances for train split """
+    # build SMOTE
+    smtom = SMOTETomek(random_state=123)
+    # SMOTE the train set
+    X_train_smtom, y_train_smtom = smtom.fit_resample(X_train, y_train)
+    # show before-and-after
+    print("Before SMOTE applied:", X_train.shape, y_train.shape)
+    print("After SMOTE applied:", X_train_smtom.shape, y_train_smtom.shape)
+
+    return X_train_smtom, y_train_smtom # return SMOTE-d train data
