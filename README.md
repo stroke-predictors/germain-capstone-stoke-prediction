@@ -41,8 +41,9 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 #### 1. Description
 
 
+Did you know, every 40 seconds someone in the United States has a stroke. According to the CDC in 2018, one in every 6 cardiovascular disease deaths comes from stroke. Our team wants to reduce these numbers. We’re analyzing health data to identify the factors that are closely linked to risk of stroke. With our conclusions we are building models, such as the Decision Tree with a max depth of 3 which is our best performing model returning  98% recall and 78% accuracy.
+
 Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
-You know, every 40 seconds someone in the United States has a stroke. And, one in every 6 cardiovascular disease deaths comes from stroke. Our team wants to reduce these numbers. We’re analyzing health data to identify the factors that are closely linked to risk of stroke. We’re also building models that predict whether a person is at risk of stroke.
 
 #### 2. Deliverables
 
@@ -84,23 +85,23 @@ You know, every 40 seconds someone in the United States has a stroke. And, one i
 
 ## Initial Hypotheses
 ### Hypothesis 1: Correlation Test (Stroke vs Age Group)
-- H0: There is no relationship between age group and risk of stroke.
+- Ho: There is no relationship between age group and risk of stroke.
 - Ha: There is a relationship between age group and risk of stroke.
 
 ### Hypothesis 2: Correlation Test (Stroke vs < 65)
-- H0: People over 65 years old are not more likely to have a stroke than people under 65.
+- Ho: People over 65 years old are not more likely to have a stroke than people under 65.
 - Ha: People over 65 years old are more likely to have a stroke than people under 65.
 
 ### Hypothesis 3: Correlation Test (Stroke vs Don't Smoke)
-- H0: People that currently smoke do not have a higher risk of stroke than people that don’t currently smoke.
+- Ho: People that currently smoke do not have a higher risk of stroke than people that don’t currently smoke.
 - Ha: People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
 
 ### Hypothesis 4: Correlation Test (Stroke vs Men)
-- H0: Men are not more at risk for stroke than women.
+- Ho: Men are not more at risk for stroke than women.
 - Ha: Men are more at risk for stroke than women.
 
 ### 2. Findings
-#### My findings are:
+#### Our findings are:
 - 
 
 
@@ -148,34 +149,34 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
 
 - [x] Obtain initial data and understand its structure
     - Obtain data from Kaggle - https://www.kaggle.com/fedesoriano/stroke-prediction-dataset
-- [] Remedy any inconsistencies, duplicates, or structural problems within data
-- [] Perform data summation
+- [x] Remedy any inconsistencies, duplicates, or structural problems within data
+- [x] Perform data summation
 
 #### 3. Data Preparation
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ 🟢 **Prepare** ➜ ☐ _Explore_ ➜ ☐ _Model_ ➜ ☐ _Deliver_
 
-- [] Address missing or inappropriate values, including outliers
-- [] Plot distributions of variables
-- [] Consider and create new features as needed
-- [] Split data into `train`, `validate`, and `test`
+- [x] Address missing or inappropriate values, including outliers
+- [x] Plot distributions of variables
+- [x] Consider and create new features as needed
+- [x] Split data into `train`, `validate`, and `test`
 
 #### 4. Data Exploration
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ 🟢 **Explore** ➜ ☐ _Model_ ➜ ☐ _Deliver_
 
-- [] Visualize relationships of variables
-- [] Formulate hypotheses
-- [] Perform statistical tests
-- [] Decide upon features and models to be used
+- [x] Visualize relationships of variables
+- [x] Formulate hypotheses
+- [x] Perform statistical tests
+- [x] Decide upon features and models to be used
 
 #### 5. Modeling & Evaluation
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ ✓ _Explore_ ➜ 🟢 **Model** ➜ ☐ _Deliver_
 
-- [] Establish baseline prediction
-- [] Create, fit, and predict with models
+- [x] Establish baseline prediction
+- [x] Create, fit, and predict with models
     - Create at least four different models
     - Use different configurations of algorithms, hyper parameters, and/or features
-- [] Evaluate models with out-of-sample data
-- [] Utilize best performing model on `test` data
+- [x] Evaluate models with out-of-sample data
+- [x] Utilize best performing model on `test` data
 - [] Summarize, visualize, and interpret findings
 
 #### 6. Product Delivery
