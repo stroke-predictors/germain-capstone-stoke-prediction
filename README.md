@@ -60,7 +60,7 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 - Jacob Paxton
 - Carolyn Davis
 - Sarah Woods
-- Elihezer Lopez
+- Eli Lopez
 - Randy French
 
 ### II. Executive Summary
