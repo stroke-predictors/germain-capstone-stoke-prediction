@@ -83,7 +83,7 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 - We successfully identified specific features that lead to stroke.
 - We built a model that can accurately predict an individuals risk of stoke.
 - There is a relationship between average glucose level and bmi.
-People over 65 years old are more likely to have a stroke than people under 65
+- People over 65 years old are more likely to have a stroke than people under 65
 - People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
 - We can not say with 95% confidence that Men are more at risk for stroke than women.
 - Our best model was Naive-Bayes with var_smoothing of 0.00001
@@ -230,7 +230,14 @@ The created modules used in this project below contain full comments an docstrin
 ### VII. Project Reproduction
 ---
 
-To recreate and reproduce results of this project, you will need to download the data set from 
+To recreate and reproduce results of this project, you will need to:
+
+- Read this README.md
+- Download these files from the repository - healthcare-dataset-stroke-data.csv, prepare.py, model.py and xxxxx.ipynb files into your working directory.
+- Run the xxxx.ipynb notebook
+
+** The dataset was downloaded from the website https://www.kaggle.com/fedesoriano/stroke-prediction-dataset on 11/15/2021. The orginial data set may have changed since we completed the project.**
+
 
 [[Return to Top]](#stroke-prediction)
 
