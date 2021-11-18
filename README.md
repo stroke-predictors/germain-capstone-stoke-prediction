@@ -42,7 +42,8 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 #### 1. Description
 
 
-Did you know, every 40 seconds someone in the United States has a stroke. According to the CDC in 2018, one in every 6 cardiovascular disease deaths comes from stroke. Our team wants to reduce these numbers. We’re analyzing health data to identify the factors that are closely linked to risk of stroke. With our conclusions we are building models, such as the Decision Tree with a max depth of 3 which is our best performing model returning  98% recall and 78% accuracy.
+Did you know, every 40 seconds someone in the United States has a stroke. Up to 80 percent of second clot-related strokes may be preventable. One in every six cardiovascular disease deaths comes from stroke. Our team wants to reduce this number. We’re analyzing health data to identify the factors that are closely linked to the risk of stroke.
+
 
 Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
 
