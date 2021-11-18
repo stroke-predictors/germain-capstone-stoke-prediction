@@ -79,6 +79,8 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 #### 2. Key findings:
 - 
+- We successfully identified specific features that lead to stroke.
+- We built a model that can accurately predict an individuals risk of stoke.
 
 #### 3. Recommendations:
 - I
