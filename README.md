@@ -235,6 +235,9 @@ To recreate and reproduce results of this project, you will need to:
 
 - Read this README.md
 - Download these files from the repository - healthcare-dataset-stroke-data.csv, prepare.py, model.py and xxxxx.ipynb files into your working directory.
+- To use the SMOTE+Tomek to eliminate class imbalances for train split, you will need to install the tool kit using pip or conda.
+   - pip install -U imbalanced-learn
+   - conda install -c conda-forge imbalanced-learn
 - Run the xxxx.ipynb notebook
 
 ** The dataset was downloaded from the website https://www.kaggle.com/fedesoriano/stroke-prediction-dataset on 11/15/2021. The orginial data set may have changed since we completed the project.**
