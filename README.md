@@ -11,12 +11,12 @@ I.   [Project Overview             ](#i-project-overview)
 II.  [Executive Summary             ](#ii-executive-summary)
 1.   [Goals:                        ](#1-goals)
 2.   [Key Findings:                 ](#2-key-findings)
-3.   [Recommendations:              ](#1-recommendations)
+3.   [Recommendations:              ](#3-recommendations)
 
 III. [Project                      ](#iii-project)
 1.   [Questions & Hypothesis       ](#1-questions--hypothesis)
 2.   [Findings                     ](#2-findings)
-3.   [Recommendations              ](#3-recommendations)
+3.   [Model Takeaways              ](#3-model-takeaways)
 
 IV.  [Data Context                 ](#iv-data-context)
 1.   [Data Dictionary              ](#1-data-dictionary)
@@ -222,7 +222,7 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
 
 ### VI. Modules
 ---
-- perpare.py
+- prepare.py
 - model.py
 
 The created modules used in this project below contain full comments an docstrings to better understand their operation.
