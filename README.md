@@ -130,7 +130,7 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 - People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
 - We can not say with 95% confidence that Men are more at risk for stroke than women.
 
-#### Model Takeaways:
+### 3. Model Takeaways:
 
 - Our best model was Naive-Bayes with var_smoothing of 0.00001
 - We outperformed the baseline in OutSample_Accuracy
@@ -222,10 +222,11 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
 
 ### VI. Modules
 ---
+
+The created modules used in this project below contain full comments and docstrings to better understand their operation.
+
 - prepare.py
 - model.py
-
-The created modules used in this project below contain full comments an docstrings to better understand their operation.
 
 ### VII. Project Reproduction
 ---
