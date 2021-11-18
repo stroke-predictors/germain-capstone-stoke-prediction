@@ -68,6 +68,8 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 #### 1. Goals:
 
+- Our objective is to prevent loss of life through identifying factors that could lead to stroke occurrence . Using accurate models we intend to reduce the healthcare expenditure for both our healthcare providers and patients. 
+
 - Incorporate classification methodologies and discover potential drivers of stroke using eleven clinical features for predicting stroke events.
 - Create modules storing functions of each step of the data pipeline
 - Thoroughly document each step
@@ -186,7 +188,7 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
     - Use different configurations of algorithms, hyper parameters, and/or features
 - [x] Evaluate models with out-of-sample data
 - [x] Utilize best performing model on `test` data
-- [] Summarize, visualize, and interpret findings
+- [x] Summarize, visualize, and interpret findings
 
 #### 6. Product Delivery
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ ✓ _Explore_ ➜ ✓ _Model_ ➜ 🟢 **Deliver**
@@ -199,6 +201,8 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
 
 ### VI. Modules
 ---
+- perpare.py
+- model.py
 
 The created modules used in this project below contain full comments an docstrings to better understand their operation.
 
