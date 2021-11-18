@@ -78,12 +78,20 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 - Make sure project is reproduceable
 
 #### 2. Key findings:
-- 
+
 - We successfully identified specific features that lead to stroke.
 - We built a model that can accurately predict an individuals risk of stoke.
+- There is a relationship between average glucose level and bmi.
+People over 65 years old are more likely to have a stroke than people under 65
+- People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
+- We can not say with 95% confidence that Men are more at risk for stroke than women.
+- Our best model was Naive-Bayes with var_smoothing of 0.00001
 
 #### 3. Recommendations:
-- I
+- People who fall into any of the above mentioned categories should take higher consideration of where there levels stand.
+- We recommend getting checked regularly by your physician, especially if you are over the age of 65.
+
+- With more time: We would explore different combinations of features that could help predict stroke, and whether or not some are independant of others.
 
 ---
 
@@ -116,8 +124,17 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 ### 2. Findings
 #### Our findings are:
-- 
+- There is a relationship between average glucose level and bmi.
+- People over 65 years old are more likely to have a stroke than people under 65.
+- People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
+- We can not say with 95% confidence that Men are more at risk for stroke than women.
 
+#### Model Takeaways:
+
+- Our best model was Naive-Bayes with var_smoothing of 0.00001
+- We outperformed the baseline in OutSample_Accuracy
+- manual_baseline OutSample_Accuracy = 0.043053, outSample_recall = 1.00
+- nb_best_model OutSample_Accuracy = 0.83953, OutSample_Recall = 0.37037
 
 ### IV. Data Context
 ---
@@ -195,11 +212,11 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
 
 #### 6. Product Delivery
 ✓ _Plan_ ➜ ✓ _Acquire_ ➜ ✓ _Prepare_ ➜ ✓ _Explore_ ➜ ✓ _Model_ ➜ 🟢 **Deliver**
-- [] Prepare Jupyter Notebook of project details through data science pipeline
+- [x] Prepare Jupyter Notebook of project details through data science pipeline
     - Python code clearly commented when necessary
     - Sufficiently utilize markdown
     - Appropriately title notebook and sections
-- [] With additional time, continue with exploration beyond MVP
+- [x] With additional time, continue with exploration beyond MVP
 - [] Proof read and complete README and project repository
 
 ### VI. Modules
@@ -212,7 +229,7 @@ The created modules used in this project below contain full comments an docstrin
 ### VII. Project Reproduction
 ---
 
-To recreate and reproduce results of this project, you will need to
+To recreate and reproduce results of this project, you will need to download the data set from 
 
 [[Return to Top]](#stroke-prediction)
 
