@@ -93,7 +93,7 @@ def engineer_features(df):
     df['is_senior'] = df['age'] >= 55
 
     # drop old categorical columns
-    df.drop(columns=['work_type','smoking_status','hypertension',
+    df.drop(columns=['work_type','hypertension',
                      'heart_disease','residence_type', 'gender'], inplace=True)
     
     # cast all boolean values as objects
@@ -107,7 +107,7 @@ def engineer_features(df):
     col_list = ['stroke','age','age_range','is_senior','bmi','bmi_range',
                 'avg_glucose_level','high_glucose',
                 'has_hypertension', 'has_heart_disease',
-                'ever_married','is_female','is_urban',
+                'ever_married','is_female','is_urban','smoking_status',
                 'current_smoker','prior_smoker','never_smoked',
                 'govt_job','self_employed','private_work','never_worked']
     df = df[col_list]
