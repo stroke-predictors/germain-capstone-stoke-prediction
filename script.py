@@ -5,11 +5,9 @@ print('hi')
 
 # take user inputs for health information on the columns
 
-'age', 'hypertension', 'heart_disease', 'avg_glucose_level', 'bmi',
-       'gender_Male', 'ever_married_Yes', 'work_type_Never_worked',
-       'work_type_Private', 'work_type_Self-employed', 'work_type_children',
-       'residence_type_Urban', 'smoking_status_formerly smoked',
-       'smoking_status_never smoked', 'smoking_status_smokes'],
+'gender', 'age', 'hypertension', 'heart_disease', 'ever_married',
+       'work_type', 'Residence_type', 'avg_glucose_level', 'bmi',
+       'smoking_status']
         
 input('What is your age?') 
 input('Do you have hypertension? Yes/No')
@@ -21,7 +19,7 @@ input('Have you ever been married? Yes/No')
 input('Have you ever worked? Yes/No')
 input('What sector do you work in? Private/Self-employed')
 input('Is your residence rural or urban?')
-input('What is your smoking status? formerly/never/currently')
+input('What is your smoking status? formerly/never/currently/unknown')
 
 
 df = pd.read_csv('healthcare-dataset-stroke-data.csv')
