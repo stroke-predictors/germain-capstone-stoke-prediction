@@ -120,6 +120,66 @@ def engineer_features(df):
 
 # ------------------------- additional prep for modeling ------------------------- #
 
+def post_analysis_model_prep_no_oversample():
+    """ 
+        Acquires the required data for modeling,
+        Selects columns chosen from exploration,
+        Encodes ever_married, hypertension, and heart_disease columns,
+        Splits data into train (60%), validate (20%), and test (20%),
+        Isolates target from each split into X and y,
+        Applies SMOTE+Tomek oversampling to address the class imbalance, and
+        Returns the dataframes.
+    """
+    # acquire data
+    df = pd.read_csv('healthcare-dataset-stroke-data.csv')
+    # select columns
+    df = df[['stroke','hypertension','heart_disease','ever_married','avg_glucose_level']]
+    # encode columns
+    df = pd.get_dummies(df, columns=['hypertension','heart_disease','ever_married'])
+    # split data
+    trainvalidate, test = train_test_split(df, test_size=.2, random_state=777)
+    train, validate = train_test_split(trainvalidate, test_size=.25, random_state=777)
+    # isolate target
+    X_train, y_train = train.drop(columns='stroke'), train.stroke
+    X_validate, y_validate = validate.drop(columns='stroke'), validate.stroke
+    X_test, y_test = test.drop(columns='stroke'), test.stroke
+    # # apply SMOTE+Tomek oversampling
+    # X_train_smtom, y_train_smtom = model.smoter(X_train, y_train)
+
+    # return dataframes
+    return X_train, y_train, X_validate, y_validate, X_test, y_test
+
+def post_analysis_model_prep():
+    """ 
+        Acquires the required data for modeling,
+        Selects columns chosen from exploration,
+        Encodes ever_married, hypertension, and heart_disease columns,
+        Splits data into train (60%), validate (20%), and test (20%),
+        Isolates target from each split into X and y,
+        Applies SMOTE+Tomek oversampling to address the class imbalance, and
+        Returns the dataframes.
+    """
+    # acquire data
+    df = pd.read_csv('healthcare-dataset-stroke-data.csv')
+    # select columns
+    df = df[['stroke','hypertension','heart_disease','ever_married','avg_glucose_level']]
+    # encode columns
+    df = pd.get_dummies(df, columns=['hypertension','heart_disease','ever_married'])
+    # split data
+    trainvalidate, test = train_test_split(df, test_size=.2, random_state=777)
+    train, validate = train_test_split(trainvalidate, test_size=.25, random_state=777)
+    # isolate target
+    X_train, y_train = train.drop(columns='stroke'), train.stroke
+    X_validate, y_validate = validate.drop(columns='stroke'), validate.stroke
+    X_test, y_test = test.drop(columns='stroke'), test.stroke
+    # apply SMOTE+Tomek oversampling
+    X_train_smtom, y_train_smtom = model.smoter(X_train, y_train)
+
+    # return dataframes
+    return X_train_smtom, y_train_smtom, X_validate, y_validate, X_test, y_test
+    
+
+
 def model_prep(df): # encode, split, isolate target, scale, SMOTE cleaned kaggle dataset (model-ready)
     """ 
         Takes the dataframe already put through prep_data as input,
