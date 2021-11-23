@@ -39,6 +39,19 @@ user_inputdict = {'avg_glucose_level': glucose,
                   'ever_married_Yes': married=='yes'
                  }
 
+# tried using np.where but it changed the dtypes to objects instead of uint8
+# user_inputdict = {'avg_glucose_level': glucose, 
+#                   'age': age, 
+#                   'hypertension_0': np.where(ht=='no', 1, 0), 
+#                   'hypertension_1': np.where(ht=='yes', 1, 0),
+#                   'heart_disease_0': np.where(hd=='no', 1, 0), 
+#                   'heart_disease_1': np.where(hd=='yes', 1, 0), 
+#                   'ever_married_No': np.where(married=='no', 1, 0),
+#                   'ever_married_Yes': np.where(married=='yes', 1, 0)
+#                  }
+
+
+print(user_inputdict)
 # grab column names
 user_input = X_train.head(0)
 # add user_inputdict values to the appropriate columns
