@@ -133,7 +133,7 @@ def post_analysis_model_prep_no_oversample():
     # acquire data
     df = pd.read_csv('healthcare-dataset-stroke-data.csv')
     # select columns
-    df = df[['stroke','hypertension','heart_disease','ever_married','avg_glucose_level']]
+    df = df[['stroke','hypertension','heart_disease','ever_married','avg_glucose_level', 'age']]
     # encode columns
     df = pd.get_dummies(df, columns=['hypertension','heart_disease','ever_married'])
     # split data
@@ -162,7 +162,7 @@ def post_analysis_model_prep():
     # acquire data
     df = pd.read_csv('healthcare-dataset-stroke-data.csv')
     # select columns
-    df = df[['stroke','hypertension','heart_disease','ever_married','avg_glucose_level']]
+    df = df[['stroke','hypertension','heart_disease','ever_married','avg_glucose_level', 'age']]
     # encode columns
     df = pd.get_dummies(df, columns=['hypertension','heart_disease','ever_married'])
     # split data
