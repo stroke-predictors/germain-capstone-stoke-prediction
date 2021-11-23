@@ -38,10 +38,10 @@ def print_classification_results(y_insample, y_outsample):
         out_recall = out_true_positive / (out_true_positive + out_false_negative)
         # add results to new row in dataframe
         running_df = running_df.append({'Model':model,
-                                        'InSample_Accuracy':in_accuracy, 
-                                        'OutSample_Accuracy':out_accuracy,
-                                        'InSample_Recall':in_recall,
-                                        'OutSample_Recall':out_recall},
+                                        'InSample_Accuracy':round(in_accuracy, 4), 
+                                        'OutSample_Accuracy':round(out_accuracy, 4),
+                                        'InSample_Recall':round(in_recall, 4),
+                                        'OutSample_Recall':round(out_recall, 4)},
                                          ignore_index=True)
 
     return running_df # return results dataframe
