@@ -1,58 +1,51 @@
-from sklearn.naive_bayes import GaussianNB
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+import prepare
+
+
+X_train, y_train, X_validate, y_validate, X_test, y_test = prepare.post_analysis_model_prep()
+
+# call model
+tree = DecisionTreeClassifier(max_depth=1, random_state=123).fit(X_train, y_train)
 
 # print out a bunch of stuff to say what the program does
-print('hi')
+print('Hello! This program predicts your probility of stroke by asking you a few questions and then comparing your answers our best model.')
 
 # take user inputs for health information on the columns
 
-'gender', 'age', 'hypertension', 'heart_disease', 'ever_married',
-       'work_type', 'Residence_type', 'avg_glucose_level', 'bmi',
-       'smoking_status']
-        
-input('What is your age?') 
-input('Do you have hypertension? Yes/No')
-input('Do you have heart disease? Yes/No')
-input('What is your glucose level?')
-input('What is your BMI?')
-input('Are you a male? Yes/No')
-input('Have you ever been married? Yes/No')
-input('Have you ever worked? Yes/No')
-input('What sector do you work in? Private/Self-employed')
-input('Is your residence rural or urban?')
-input('What is your smoking status? formerly/never/currently/unknown')
+# Index(['avg_glucose_level', 
+#        'age', 
+#        'hypertension',
+#        'heart_disease',
+#        'ever_married_Yes']
 
+# Take user input
+age = input('What is your age? \n') 
+glucose = input('What is your glucose level in mg/dL? range (0-300) \n')
+ht = input('Do you have hypertension? yes/no \n')
+hd = input('Do you have heart disease? yes/no \n')
+married = input('Have you ever been married? yes/no \n')
 
-df = pd.read_csv('healthcare-dataset-stroke-data.csv')
-df = prepare.prep_data(df).drop(columns=['age_range',])
-df['stroke'] = df['stroke'].astype('int64')
-# set list of columns to one-hot encode
-col_list = ['gender','ever_married','work_type','residence_type','smoking_status']
-# apply one-hot encoding using above list
-df = pd.get_dummies(df, columns=col_list, drop_first=True)
-# split using same random state as explore stage
-trainvalidate, test = train_test_split(df, test_size=.2, random_state=777)
-train, validate = train_test_split(trainvalidate, test_size=.25, random_state=777)
-# isolate target
-X_train, y_train = train.drop(columns='stroke'), train.stroke
-X_validate, y_validate = validate.drop(columns='stroke'), validate.stroke
-X_test, y_test = test.drop(columns='stroke'), test.stroke
-                                   
-# build, fit our best model inline (store model into cache)
-# create naive bayes model
-nb = GaussianNB(var_smoothing=0.00001).fit(X_train, y_train)
-# make predictions in new column
-y_train_predictions['nb_best_model'] = nb.predict(X_train)
-y_test = pd.DataFrame(y_test).rename(columns={'stroke':'out_actuals'})
-y_test['nb_best_model']= nb.predict(X_test)
+# place user input in dictionary
+user_inputdict = {'avg_glucose_level': glucose, 
+                  'age': age, 
+                  'hypertension_0': ht=='no', 
+                  'hypertension_1': ht=='yes',
+                  'heart_disease_0': hd=='no', 
+                  'heart_disease_1': hd=='yes', 
+                  'ever_married_No': married=='no',
+                  'ever_married_Yes': married=='yes'
+                 }
 
-# ingest data, prep, split, scale, encode, etc
-# fit on ingested data
+# grab column names
+user_input = X_train.head(0)
+# add user_inputdict values to the appropriate columns
+user_input1 = user_input.append(user_inputdict, ignore_index=True)
 
-# take user's inputs as a new line in dataframe
+# make predictions based on users input
+pred = tree.predict_proba(user_input1)
 
-
-# output predict_proba results
-Xnew = [[...], [...]]
-ynew = nb.predict_proba(Xnew)
-                                   
-print(f'you have a {} chance of stroke')
+#
+print(f'You have a {round((pred[0][1]), 3)*100}% chance of stroke')
