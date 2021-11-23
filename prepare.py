@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -16,8 +17,8 @@ def prep_data(df): # clean dataframe, impute nulls in BMI (exploration-ready)
         Returns the prepared dataframe. This does not do model prep work.
     """
     
-    # drop the outlier in gender ("other") and the outlier in BMI (97.6%), reset index
-    df = df.drop([3116,2128]).reset_index().drop(columns='index')
+    # drop the outlier in gender ("other") and the outliers in BMI (>90%), reset index
+    df = df.drop([3116,2128,4209]).reset_index().drop(columns='index')
     
     # drop id column (index is just as valuable)
     df = df.drop(columns='id')
@@ -94,6 +95,13 @@ def engineer_features(df):
     # drop old categorical columns
     df.drop(columns=['work_type','smoking_status','hypertension',
                      'heart_disease','residence_type', 'gender'], inplace=True)
+    
+    # cast all boolean values as objects
+    df = df.astype('string')
+    df['stroke'] = np.where(df.stroke == "True", 1, 0)
+    df['age'] = df['age'].astype('float64')
+    df['bmi'] = df['bmi'].astype('float64')
+    df['avg_glucose_level'] = df['avg_glucose_level'].astype('float64')
     
     # order columns for nicer output
     col_list = ['stroke','age','age_range','is_senior','bmi','bmi_range',
