@@ -56,7 +56,7 @@ def calculate_risk(user_input_row):
     X_train, y_train = prep_data()
     model = GaussianNB(var_smoothing=.01).fit(X_train, y_train)
     calculated_risk = model.predict_proba(user_input_row)
-    # calculated_risk = int(calculated_risk[0][1] * 100)
+    calculated_risk = int(calculated_risk[0][1] * 100)
 
     return calculated_risk
 
@@ -78,6 +78,6 @@ user_dict = {'age':[age],
 
 user_input_row = pd.DataFrame(user_dict)
 
-print(f"Our model calculates your risk of stroke is: {calculate_risk(user_input_row)}%")
+print(f"\nOur model calculates your risk of stroke is: {calculate_risk(user_input_row)}%")
 
 quit()
