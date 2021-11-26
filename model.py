@@ -10,6 +10,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import SimpleImputer
 
+from sklearn.metrics import f1_score
+
 from imblearn.combine import SMOTETomek 
 
 # ------------------------- print results ------------------------- #
@@ -20,28 +22,42 @@ def print_classification_results(y_insample, y_outsample):
         Appends all results to running dataframe, 
         Returns dataframe. """
     # create empty results dataframe
-    running_df = pd.DataFrame(columns=['Model','InSample_Accuracy','OutSample_Accuracy'])
+    running_df = pd.DataFrame(columns=['Model','InSample_Accuracy','OutSample_Accuracy',
+                                       'InSample_Recall','OutSample_Recall',
+                                       'InSample_Precision','OutSample_Precision',
+                                       'InSample_F1_Score','OutSample_F1_Score'])
     # loop through each model
     for model in y_insample.columns[1:]:
         # calculate model accuracy
         in_accuracy = (y_insample[model] == y_insample.in_actuals).mean()
         out_accuracy = (y_outsample[model] == y_outsample.out_actuals).mean()
-        # determine sums of true positives and false negatives for recall calculation
+        # determine sums of true positives and false negatives for recall and precision calculations
             # true positive: model correctly predicts 1 when actual is 1
             # false negative: model wrongly predicts 0 when actual is 1
         in_true_positive = ((y_insample[model] == 1) & (y_insample['in_actuals'] == 1)).sum()
+        in_false_positive = ((y_insample[model] == 1) & (y_insample['in_actuals'] == 0)).sum()
         in_false_negative = ((y_insample[model] == 0) & (y_insample['in_actuals'] == 1)).sum()
         out_true_positive = ((y_outsample[model] == 1) & (y_outsample['out_actuals'] == 1)).sum()
+        out_false_positive = ((y_outsample[model] == 1) & (y_outsample['out_actuals'] == 0)).sum()
         out_false_negative = ((y_outsample[model] == 0) & (y_outsample['out_actuals'] == 1)).sum()
-        # calculate recall scores
+        # calculate recall and precision scores
         in_recall = in_true_positive / (in_true_positive + in_false_negative)
         out_recall = out_true_positive / (out_true_positive + out_false_negative)
+        in_precision = in_true_positive / (in_true_positive + in_false_positive)
+        out_precision = out_true_positive / (out_true_positive + out_false_positive)
+        # calculate f1 score
+        in_f1_score = (2 * in_precision * in_recall) / (in_precision + in_recall)
+        out_f1_score = (2 * out_precision * out_recall) / (out_precision + out_recall)
         # add results to new row in dataframe
         running_df = running_df.append({'Model':model,
                                         'InSample_Accuracy':round(in_accuracy, 4), 
                                         'OutSample_Accuracy':round(out_accuracy, 4),
                                         'InSample_Recall':round(in_recall, 4),
-                                        'OutSample_Recall':round(out_recall, 4)},
+                                        'OutSample_Recall':round(out_recall, 4),
+                                        'InSample_Precision':round(in_precision, 4),
+                                        'OutSample_Precision':round(out_precision, 4),
+                                        'InSample_F1_Score':round(in_f1_score, 4),
+                                        'OutSample_F1_Score':round(out_f1_score, 4)},
                                          ignore_index=True)
 
     return running_df # return results dataframe
