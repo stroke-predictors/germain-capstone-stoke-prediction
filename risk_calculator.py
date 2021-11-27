@@ -1,5 +1,5 @@
 # This program calculates a user's risk of stroke based on different factors like age.
-# The calculation is done by a predictive model.
+# The calculation is done by a predictive model with Recall: 83%, Accuracy: 65%, and ROC AUC: 85% on out-of-sample data.
 # The model was created by the Stroke Prediction capstone team from Codeup's Germain data science cohort.
 # The data to train the model comes from a healthcare dataset involving a person's age, BMI, glucose level, and more.
 # The team members are: Randy French, Sarah Lawson Woods, Carolyn Davis, Elihizer Lopez, and Jacob Paxton.
