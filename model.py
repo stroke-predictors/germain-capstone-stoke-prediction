@@ -10,6 +10,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import SimpleImputer
 
+from sklearn.metrics import f1_score
+
 from imblearn.combine import SMOTETomek 
 
 # ------------------------- print results ------------------------- #
@@ -20,28 +22,42 @@ def print_classification_results(y_insample, y_outsample):
         Appends all results to running dataframe, 
         Returns dataframe. """
     # create empty results dataframe
-    running_df = pd.DataFrame(columns=['Model','InSample_Accuracy','OutSample_Accuracy'])
+    running_df = pd.DataFrame(columns=['Model','InSample_Accuracy','OutSample_Accuracy',
+                                       'InSample_Recall','OutSample_Recall',
+                                       'InSample_Precision','OutSample_Precision',
+                                       'InSample_F1_Score','OutSample_F1_Score'])
     # loop through each model
     for model in y_insample.columns[1:]:
         # calculate model accuracy
         in_accuracy = (y_insample[model] == y_insample.in_actuals).mean()
         out_accuracy = (y_outsample[model] == y_outsample.out_actuals).mean()
-        # determine sums of true positives and false negatives for recall calculation
+        # determine sums of true positives and false negatives for recall and precision calculations
             # true positive: model correctly predicts 1 when actual is 1
             # false negative: model wrongly predicts 0 when actual is 1
         in_true_positive = ((y_insample[model] == 1) & (y_insample['in_actuals'] == 1)).sum()
+        in_false_positive = ((y_insample[model] == 1) & (y_insample['in_actuals'] == 0)).sum()
         in_false_negative = ((y_insample[model] == 0) & (y_insample['in_actuals'] == 1)).sum()
         out_true_positive = ((y_outsample[model] == 1) & (y_outsample['out_actuals'] == 1)).sum()
+        out_false_positive = ((y_outsample[model] == 1) & (y_outsample['out_actuals'] == 0)).sum()
         out_false_negative = ((y_outsample[model] == 0) & (y_outsample['out_actuals'] == 1)).sum()
-        # calculate recall scores
+        # calculate recall and precision scores
         in_recall = in_true_positive / (in_true_positive + in_false_negative)
         out_recall = out_true_positive / (out_true_positive + out_false_negative)
+        in_precision = in_true_positive / (in_true_positive + in_false_positive)
+        out_precision = out_true_positive / (out_true_positive + out_false_positive)
+        # calculate f1 score
+        in_f1_score = (2 * in_precision * in_recall) / (in_precision + in_recall)
+        out_f1_score = (2 * out_precision * out_recall) / (out_precision + out_recall)
         # add results to new row in dataframe
         running_df = running_df.append({'Model':model,
                                         'InSample_Accuracy':round(in_accuracy, 4), 
                                         'OutSample_Accuracy':round(out_accuracy, 4),
                                         'InSample_Recall':round(in_recall, 4),
-                                        'OutSample_Recall':round(out_recall, 4)},
+                                        'OutSample_Recall':round(out_recall, 4),
+                                        'InSample_Precision':round(in_precision, 4),
+                                        'OutSample_Precision':round(out_precision, 4),
+                                        'InSample_F1_Score':round(in_f1_score, 4),
+                                        'OutSample_F1_Score':round(out_f1_score, 4)},
                                          ignore_index=True)
 
     return running_df # return results dataframe
@@ -190,3 +206,56 @@ def smoter(X_train, y_train):
     print("After SMOTE applied:", X_train_smtom.shape, y_train_smtom.shape)
 
     return X_train_smtom, y_train_smtom # return SMOTE-d train data
+
+# ------------------ risk_calculator.py functions ------------------ #
+
+def risk_calculator_prep_data():
+    """
+        Ingests the healthcare dataset,
+        Drops the same rows that were dropped for analysis,
+        Cleans and encodes data as necessary,
+        Limits the data to the required features,
+        Splits the data in the same way as was done for the team's analysis,
+        Isolates the target from the split needed to train the model,
+        Oversamples the data the same way it was done for the analysis,
+        Return the data needed to train the model.
+    """
+    # ingest data
+    df = pd.read_csv('healthcare-dataset-stroke-data.csv')
+    # drops a few rows that were dropped for other reasons in analysis
+    df = df.drop([3116,2128,4209]).reset_index().drop(columns='index')
+    # create features
+    df['stroke'] = df['stroke'] == 1
+    df['high_glucose'] = df['avg_glucose_level'] >= 125
+    df['has_hypertension'] = df['hypertension'] == 1
+    df['has_heart_disease'] = df['heart_disease'] == 1
+    df['ever_married'] = df['ever_married'] == 'Yes'
+    # limit to required features
+    df = df[['stroke','age','high_glucose','has_hypertension','has_heart_disease','ever_married']]
+    # split data
+    train_validate, test = train_test_split(df, test_size=.2, random_state=777)
+    train, validate = train_test_split(train_validate, test_size=.25, random_state=777)
+    # isolate target
+    X_train, y_train = train.drop(columns='stroke'), train.stroke
+    # SMOTE+Tomek oversampling
+    """ Use SMOTE+Tomek to eliminate class imbalances for train split """
+    # build SMOTE
+    smtom = SMOTETomek(random_state=123)
+    # SMOTE the train set
+    X_train, y_train = smtom.fit_resample(X_train, y_train)
+    # return data needed to train model
+    return X_train, y_train
+
+def risk_calculator_calculate_risk(user_input_row):
+    """
+        Re-creates the best-performing model from the Stroke Prediction team's analysis,
+        Fits it on the data used in the analysis,
+        Use sklearn's predict_proba method to calculate the risk of stroke,
+        Return the calculated number.
+    """
+    X_train, y_train = risk_calculator_prep_data()
+    model = GaussianNB(var_smoothing=.01).fit(X_train, y_train)
+    calculated_risk = model.predict_proba(user_input_row)
+    calculated_risk = int(calculated_risk[0][1] * 100)
+
+    return calculated_risk
