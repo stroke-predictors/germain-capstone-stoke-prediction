@@ -206,3 +206,56 @@ def smoter(X_train, y_train):
     print("After SMOTE applied:", X_train_smtom.shape, y_train_smtom.shape)
 
     return X_train_smtom, y_train_smtom # return SMOTE-d train data
+
+# ------------------ risk_calculator.py functions ------------------ #
+
+def risk_calculator_prep_data():
+    """
+        Ingests the healthcare dataset,
+        Drops the same rows that were dropped for analysis,
+        Cleans and encodes data as necessary,
+        Limits the data to the required features,
+        Splits the data in the same way as was done for the team's analysis,
+        Isolates the target from the split needed to train the model,
+        Oversamples the data the same way it was done for the analysis,
+        Return the data needed to train the model.
+    """
+    # ingest data
+    df = pd.read_csv('healthcare-dataset-stroke-data.csv')
+    # drops a few rows that were dropped for other reasons in analysis
+    df = df.drop([3116,2128,4209]).reset_index().drop(columns='index')
+    # create features
+    df['stroke'] = df['stroke'] == 1
+    df['high_glucose'] = df['avg_glucose_level'] >= 125
+    df['has_hypertension'] = df['hypertension'] == 1
+    df['has_heart_disease'] = df['heart_disease'] == 1
+    df['ever_married'] = df['ever_married'] == 'Yes'
+    # limit to required features
+    df = df[['stroke','age','high_glucose','has_hypertension','has_heart_disease','ever_married']]
+    # split data
+    train_validate, test = train_test_split(df, test_size=.2, random_state=777)
+    train, validate = train_test_split(train_validate, test_size=.25, random_state=777)
+    # isolate target
+    X_train, y_train = train.drop(columns='stroke'), train.stroke
+    # SMOTE+Tomek oversampling
+    """ Use SMOTE+Tomek to eliminate class imbalances for train split """
+    # build SMOTE
+    smtom = SMOTETomek(random_state=123)
+    # SMOTE the train set
+    X_train, y_train = smtom.fit_resample(X_train, y_train)
+    # return data needed to train model
+    return X_train, y_train
+
+def risk_calculator_calculate_risk(user_input_row):
+    """
+        Re-creates the best-performing model from the Stroke Prediction team's analysis,
+        Fits it on the data used in the analysis,
+        Use sklearn's predict_proba method to calculate the risk of stroke,
+        Return the calculated number.
+    """
+    X_train, y_train = risk_calculator_prep_data()
+    model = GaussianNB(var_smoothing=.01).fit(X_train, y_train)
+    calculated_risk = model.predict_proba(user_input_row)
+    calculated_risk = int(calculated_risk[0][1] * 100)
+
+    return calculated_risk
