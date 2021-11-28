@@ -8,7 +8,7 @@ import prepare
 X_train, y_train, X_validate, y_validate, X_test, y_test = prepare.post_analysis_model_prep()
 
 # call model
-tree = DecisionTreeClassifier(max_depth=1, random_state=123).fit(X_train, y_train)
+tree = DecisionTreeClassifier(max_depth=3, random_state=123).fit(X_train, y_train)
 
 # print out a bunch of stuff to say what the program does
 print('Hello! This program predicts your probility of stroke by asking you a few questions and then comparing your answers our best model.')
