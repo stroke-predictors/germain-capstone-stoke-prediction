@@ -107,9 +107,9 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 - What pre-existing conditions have a correlation to a stroke?  (hypertension, heart_disease)
 
 ## Initial Hypotheses
-### Hypothesis 1: Correlation Test (Stroke vs Age Group)
-- Ho: There is no relationship between age group and risk of stroke.
-- Ha: There is a relationship between age group and risk of stroke.
+### Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
+- Ho: An increase in BMI does not correspond with an increase in average glucose level.
+- Ha: An increase in BMI corresponds with an increase in average glucose level.
 
 ### Hypothesis 2: Correlation Test (Stroke vs < 65)
 - Ho: People over 65 years old are not more likely to have a stroke than people under 65.
