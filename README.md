@@ -43,10 +43,11 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 #### 1. Description
 
 
-Did you know, every 40 seconds someone in the United States has a stroke. Up to 80 percent of second clot-related strokes may be preventable. One in every six cardiovascular disease deaths comes from stroke. Our team wants to reduce this number. We’re analyzing health data to identify the factors that are closely linked to the risk of stroke.
-
+Did you know, every 40 seconds someone in the United States has a stroke and every 4 minutes, someone dies of stroke. Our team wants to reduce these numbers. We want to identify key drivers of stroke and to model accurate predictions to mitigate future occurrences of this illness.
 
 Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
+
+This notebook was created by the Stroke Prediction team from Codeup's Germain data science cohort. The notebook analyzes a stroke prediction dataset in an attempt to find the drivers of stroke and build a model that predicts stroke outcomes. The analysis from this notebook is used in our Stroke Risk Calculator, which incorporates our best model and generates a risk percentage for a user's inputs.
 
 #### 2. Deliverables
 
@@ -61,8 +62,8 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 - Jacob Paxton
 - Carolyn Davis
-- Sarah Woods
-- Eli Lopez
+- Sarah Lawson Woods
+- Elihezer Lopez
 - Randy French
 
 ### II. Executive Summary
@@ -70,7 +71,9 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 #### 1. Goals:
 
-- Our objective is to prevent loss of life through identifying factors that could lead to stroke occurrence . Using accurate models we intend to reduce the healthcare expenditure for both our healthcare providers and patients. 
+- 1. Determine the drivers of stroke risk
+- 2. Create an accurate predictive model for stroke outcomes
+- 3. Deliver a production-ready stroke risk calculator
 
 - Incorporate classification methodologies and discover potential drivers of stroke using eleven clinical features for predicting stroke events.
 - Create modules storing functions of each step of the data pipeline
@@ -80,19 +83,15 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 #### 2. Key findings:
 
-- We successfully identified specific features that lead to stroke.
-- We built a model that can accurately predict an individuals risk of stoke.
-- There is a relationship between average glucose level and bmi.
-- People over 65 years old are more likely to have a stroke than people under 65
-- People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
-- We can not say with 95% confidence that Men are more at risk for stroke than women.
-- Our best model was Naive-Bayes with var_smoothing of 0.00001
+- Drivers of stroke risk: Old age; Hyperglycemia/high glucose levels; hypertension; heart disease; marriage under 55 years old: never having married over 55 years old
+- Non-Drivers: BMI; Gender; Residence location; Smoking status; Employment type
+- Best model's performance: Recall: 83%, Accuracy: 65%, ROC AUC: 85%
 
 #### 3. Recommendations:
-- People who fall into any of the above mentioned categories should take higher consideration of where there levels stand.
-- We recommend getting checked regularly by your physician, especially if you are over the age of 65.
+- People who fall into the high-risk categories we've found should consult with their doctor to get screened
+- People can use our risk calculator to check their risk of stroke
 
-- With more time: We would explore different combinations of features that could help predict stroke, and whether or not some are independant of others.
+- With additional time: We would collect more records to train our model and conduct further multivariate analysis.
 
 ---
 
@@ -107,28 +106,29 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 - What pre-existing conditions have a correlation to a stroke?  (hypertension, heart_disease)
 
 ## Initial Hypotheses
-### Hypothesis 1: Correlation Test (Stroke vs Age Group)
-- Ho: There is no relationship between age group and risk of stroke.
-- Ha: There is a relationship between age group and risk of stroke.
+### Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
+- Ho: An increase in BMI does not correspond with an increase in average glucose level.
+- Ha: An increase in BMI corresponds with an increase in average glucose level.
 
-### Hypothesis 2: Correlation Test (Stroke vs < 65)
-- Ho: People over 65 years old are not more likely to have a stroke than people under 65.
-- Ha: People over 65 years old are more likely to have a stroke than people under 65.
+### Hypothesis 2: On average, a person who has had a stroke is older than someone who has not.
+- Ho: A person who has had a stroke is not statistically-significantly older than someone who has not.
+- Ha: A person who has had a stroke is statistically-significantly older than someone who has not.
 
-### Hypothesis 3: Correlation Test (Stroke vs Don't Smoke)
-- Ho: People that currently smoke do not have a higher risk of stroke than people that don’t currently smoke.
-- Ha: People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
+### Hypothesis 3: Smoking has an impact on stroke occurrence.
+- Ho: Smoking does not have an impact on stroke occurrence.
+- Ha: Smoking has an impact on stroke occurrence.
 
-### Hypothesis 4: Correlation Test (Stroke vs Men)
-- Ho: Men are not more at risk for stroke than women.
-- Ha: Men are more at risk for stroke than women.
+### Hypothesis 4: Men and women have different stroke occurrence rates.
+- Ho: Men and women do not have different stroke occurrence rates.
+- Ha: Men and women have different stroke occurrence rates.
 
 ### 2. Findings
-#### Our findings are:
-- There is a relationship between average glucose level and bmi.
-- People over 65 years old are more likely to have a stroke than people under 65.
-- People that currently smoke have a higher risk of stroke than people that don’t currently smoke.
-- We can not say with 95% confidence that Men are more at risk for stroke than women.
+#### Our findings are: Initial Hypotheses - Combined Results
+
+- We are 95% confident that an increase in BMI corresponds with an increase in average glucose level.
+- We are 95% confident that people who have had a stroke are older on average than people who have not.
+- We are 95% confident that smoking has an impact on stroke occurrence.
+- We can't say with 95% confidence that men and women have different stroke occurrence rates.
 
 ### 3. Model Takeaways:
 
@@ -218,7 +218,7 @@ Following acquisition and preparation of the initial Kaggle dataset, the DataFra
     - Sufficiently utilize markdown
     - Appropriately title notebook and sections
 - [x] With additional time, continue with exploration beyond MVP
-- [] Proof read and complete README and project repository
+- [x] Proof read and complete README and project repository
 
 ### VI. Modules
 ---
@@ -227,6 +227,7 @@ The created modules used in this project below contain full comments and docstri
 
 - prepare.py
 - model.py
+- risk_calculator.py
 
 ### VII. Project Reproduction
 ---
