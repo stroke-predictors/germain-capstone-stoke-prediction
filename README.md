@@ -43,7 +43,7 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 #### 1. Description
 
 
-Did you know, every 40 seconds someone in the United States has a stroke and every 4 minutes, someone dies of stroke. Our team wants to reduce these numbers. We want to identify key drivers of stroke and to model accurate predictions to mitigate future occurrences of this illness.
+Did you know, every 40 seconds someone in the United States has a stroke and every 4 minutes, someone dies of stroke. Our team wants to reduce these numbers. We want to identify key drivers of stroke and model accurate predictions that mitigate future occurrences of this disease.
 
 Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
 
