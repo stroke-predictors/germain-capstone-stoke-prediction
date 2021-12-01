@@ -43,7 +43,7 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 #### 1. Description
 
 
-Did you know, every 40 seconds someone in the United States has a stroke and every 4 minutes, someone dies of stroke. Our team wants to reduce these numbers. We want to identify key drivers of stroke and to model accurate predictions to mitigate future occurrences of this illness.
+Did you know, every 40 seconds someone in the United States has a stroke and every 4 minutes, someone dies of stroke. Our team wants to reduce these numbers. We want to identify key drivers of stroke and model accurate predictions that mitigate future occurrences of this disease.
 
 Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
 
@@ -60,10 +60,10 @@ This notebook was created by the Stroke Prediction team from Codeup's Germain da
 
 #### 3. Team Members
 
-- Jacob Paxton
 - Carolyn Davis
-- Sarah Lawson Woods
 - Elihezer Lopez
+- Jacob Paxton
+- Sarah Lawson Woods
 - Randy French
 
 ### II. Executive Summary
@@ -235,11 +235,11 @@ The created modules used in this project below contain full comments and docstri
 To recreate and reproduce results of this project, you will need to:
 
 - Read this README.md
-- Download these files from the repository - healthcare-dataset-stroke-data.csv, prepare.py, model.py and xxxxx.ipynb files into your working directory.
+- Download these files from the repository - healthcare-dataset-stroke-data.csv, prepare.py, model.py, risk_calculator.py and final_notebook.ipynb files into your working directory.
 - To use the SMOTE+Tomek to eliminate class imbalances for train split, you will need to install the tool kit using pip or conda.
    - pip install -U imbalanced-learn
    - conda install -c conda-forge imbalanced-learn
-- Run the xxxx.ipynb notebook
+- Run the final_notebook.ipynb notebook
 
 ** The dataset was downloaded from the website https://www.kaggle.com/fedesoriano/stroke-prediction-dataset on 11/15/2021. The orginial data set may have changed since we completed the project.**
 
