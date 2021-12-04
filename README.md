@@ -49,6 +49,11 @@ Identify stroke factors, using the stroke prediction dataset from Kaggle, build 
 
 This notebook was created by the Stroke Prediction team from Codeup's Germain data science cohort. The notebook analyzes a stroke prediction dataset in an attempt to find the drivers of stroke and build a model that predicts stroke outcomes. The analysis from this notebook is used in our Stroke Risk Calculator, which incorporates our best model and generates a risk percentage for a user's inputs.
 
+Risk Calculator:
+
+Python script that takes user inputs, uses best model to calculate predict_proba on user inputs, the returns predict_proba calculation for had-stroke outcome
+
+
 #### 2. Deliverables
 
 - Slides for project presentation.
