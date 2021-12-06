@@ -125,8 +125,8 @@ ___
 
 ## Initial Hypotheses
 ### Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
-- $H_0$: An increase in BMI does not correspond with an increase in average glucose level.
-- $H_a$: An increase in BMI corresponds with an increase in average glucose level.
+- *H<sub>0</sub>*: An increase in BMI does not correspond with an increase in average glucose level.
+- *H<sub>a</sub>*: An increase in BMI corresponds with an increase in average glucose level.
 
 ### Hypothesis 2: On average, a person who has had a stroke is older than someone who has not.
 - $H_0$: A person who has had a stroke is not statistically-significantly older than someone who has not.
