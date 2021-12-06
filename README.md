@@ -102,7 +102,7 @@ This project was created by the Stroke Prediction team from Codeup's Germain dat
 ___
 
 ### III. Our Data Product: Stroke Risk Calculator
-/images/Stroke_Risk_Calculator.png
+![This is an image](https://github.com/stroke-predictors/germain-capstone-stroke-prediction/blob/main/scratch/images.ipynb)
 
 #### 1. Overview
 
@@ -125,7 +125,7 @@ ___
 
 ### III. Project
 
-#### 1. Hypotheses
+### 1. Hypotheses
 
 <!-- - What age group is most at risk?
 - What drivers affect stroke?
@@ -133,20 +133,20 @@ ___
 - Are men more likely to have strokes?
 - What pre-existing conditions have a correlation to a stroke?  (hypertension, heart_disease) -->
 
-## Initial Hypotheses
-### Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
+### Initial Hypotheses
+### #Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
 - *H<sub>0</sub>*: An increase in BMI does not correspond with an increase in average glucose level.
 - *H<sub>a</sub>*: An increase in BMI corresponds with an increase in average glucose level.
 
-### Hypothesis 2: On average, a person who has had a stroke is older than someone who has not.
+#### Hypothesis 2: On average, a person who has had a stroke is older than someone who has not.
 - *H<sub>0</sub>*: A person who has had a stroke is not statistically-significantly older than someone who has not.
 - *H<sub>a</sub>*: A person who has had a stroke is statistically-significantly older than someone who has not.
 
-### Hypothesis 3: Smoking has an impact on stroke occurrence.
+#### Hypothesis 3: Smoking has an impact on stroke occurrence.
 - *H<sub>0</sub>*: Smoking does not have an impact on stroke occurrence.
 - *H<sub>a</sub>*: Smoking has an impact on stroke occurrence.
 
-### Hypothesis 4: Men and women have different stroke occurrence rates.
+#### Hypothesis 4: Men and women have different stroke occurrence rates.
 - *H<sub>0</sub>*: Men and women do not have different stroke occurrence rates.
 - *H<sub>a</sub>*: Men and women have different stroke occurrence rates.
 
