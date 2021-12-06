@@ -102,7 +102,7 @@ This project was created by the Stroke Prediction team from Codeup's Germain dat
 ___
 
 ### III. Our Data Product: Stroke Risk Calculator
-![This is an image](https://github.com/stroke-predictors/germain-capstone-stroke-prediction/blob/main/scratch/images.ipynb)
+![This is an image](https://i.imgur.com/7xpF89F.png)
 
 #### 1. Overview
 
