@@ -14,7 +14,7 @@ II.  [Executive Summary             ](#ii-executive-summary)
 3.   [Recommendations               ](#3-recommendations)
 4.   [Our Next Steps                ](#4-our-next-steps)
 
-III. [Our Data Product: Stroke Risk Calculator](#iii-Our-Data-Product:-Stroke-Risk-Calculator)
+III. [Our Data Product Stroke Risk Calculator](#iii-Our-Data-Product-Stroke-Risk-Calculator)
 1.   [Overview                     ](#1-overview)
 2.   [How it works                 ](#2-how-it-works?)
 3.   [How to use it                ](#3-how-to-use-it)
@@ -134,7 +134,7 @@ ___
 - What pre-existing conditions have a correlation to a stroke?  (hypertension, heart_disease) -->
 
 ### Initial Hypotheses
-### #Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
+#### Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
 - *H<sub>0</sub>*: An increase in BMI does not correspond with an increase in average glucose level.
 - *H<sub>a</sub>*: An increase in BMI corresponds with an increase in average glucose level.
 
