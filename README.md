@@ -16,7 +16,7 @@ II.  [Executive Summary             ](#ii-executive-summary)
 3.   [Recommendations               ](#3-recommendations)
 4.   [Our Next Steps                ](#4-our-next-steps)
 
-III. [Our Data Product Stroke Risk Calculator](#iii-Our-Data-Product-Stroke-Risk-Calculator)
+III. [Our Data Product: Stroke Risk Calculator](#iii-Our-Data-Product-Stroke-Risk-Calculator)
 1.   [Overview                     ](#1-overview)
 2.   [How it works                 ](#2-how-it-works?)
 3.   [How to use it                ](#3-how-to-use-it)
@@ -77,10 +77,10 @@ This project was created by the Stroke Prediction team from Codeup's Germain dat
 
 #### 1. Goals
 
-- 1. Determine the drivers of stroke risk
-- 2. Create an accurate predictive model for stroke outcomes
-- 3. Predict the probability of stroke
-- 4. Deliver a production-ready stroke risk calculator
+1. Determine the drivers of stroke risk
+2. Create an accurate predictive model for stroke outcomes
+3. Predict the probability of stroke
+4. Deliver a production-ready stroke risk calculator
 
 <!-- - Incorporate classification methodologies and discover potential drivers of stroke using eleven clinical features for predicting stroke events.
 - Create modules storing functions of each step of the data pipeline
