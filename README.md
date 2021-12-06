@@ -14,15 +14,20 @@ II.  [Executive Summary             ](#ii-executive-summary)
 3.   [Recommendations               ](#3-recommendations)
 4.   [Our Next Steps                ](#4-our-next-steps)
 
-III. [Project                      ](#iii-project)
+III. [Our Data Product: Stroke Risk Calculator](#iii-Our-Data-Product:-Stroke-Risk-Calculator)
+1.   [Overview                     ](#1-overview)
+2.   [How it works                 ](#2-how-it-works?)
+3.   [How to use it                ](#3-how-to-use-it)
+
+IV.  [Project                      ](#iii-project)
 1.   [Hypotheses                   ](#1-hypotheses)
 2.   [Findings                     ](#2-findings)
 3.   [Model Takeaways              ](#3-model-takeaways)
 
-IV.  [Data Context                 ](#iv-data-context)
+V.   [Data Context                 ](#iv-data-context)
 1.   [Data Dictionary              ](#1-data-dictionary)
 
-V.   [Process                      ](#v-process)
+VI.  [Process                      ](#v-process)
 1.   [Project Planning             ](#1-project-planning)
 2.   [Data Acquisition             ](#2-data-acquisition)
 3.   [Data Preparation             ](#3-data-preparation)
@@ -30,9 +35,9 @@ V.   [Process                      ](#v-process)
 5.   [Modeling & Evaluation        ](#5-modeling--evaluation)
 6.   [Product Delivery             ](#6-product-delivery)
 
-VI.   [Modules                      ](#vi-modules)
+VII.   [Modules                      ](#vi-modules)
 
-VII.  [Project Reproduction         ](#vii-project-reproduction)
+VIII.  [Project Reproduction         ](#vii-project-reproduction)
 
 <br>
 
@@ -97,19 +102,24 @@ This project was created by the Stroke Prediction team from Codeup's Germain dat
 ___
 
 ### III. Our Data Product: Stroke Risk Calculator
-@@@@@ Image of calc goes here @@@@@@@
+/images/Stroke_Risk_Calculator.png
 
-#### Overview
+#### 1. Overview
 
 - Provide users with a score indicating stroke risk where higher numbers are higher risk
 - Uses our best model to calculate the risk score
 
 
-#### How it works?
--Re-creates the best-performing model from the Stroke Prediction team's analysis and fits it on the data used in the analysis.
--Uses sklearn's predict_proba method to calculate the risk of stroke
--Finally it returns the calculated number that indicates a percentage of risk for stroke.
-#### How to use it
+#### 2. How it works?
+- Re-creates the best-performing model from the Stroke Prediction team's analysis and fits it on the data used in the analysis.
+- Uses sklearn's predict_proba method to calculate the risk of stroke
+- Finally it returns the calculated number that indicates a percentage of risk for stroke.
+
+#### 3. How to use it
+
+- Run the risk_calculator.py file in command line or terminal.
+- Imput the answers to the questions. 
+- Program returns a calculated risk percentage.
 
 ---
 
@@ -129,16 +139,16 @@ ___
 - *H<sub>a</sub>*: An increase in BMI corresponds with an increase in average glucose level.
 
 ### Hypothesis 2: On average, a person who has had a stroke is older than someone who has not.
-- $H_0$: A person who has had a stroke is not statistically-significantly older than someone who has not.
-- $H_a$: A person who has had a stroke is statistically-significantly older than someone who has not.
+- *H<sub>0</sub>*: A person who has had a stroke is not statistically-significantly older than someone who has not.
+- *H<sub>a</sub>*: A person who has had a stroke is statistically-significantly older than someone who has not.
 
 ### Hypothesis 3: Smoking has an impact on stroke occurrence.
-- $H_0$: Smoking does not have an impact on stroke occurrence.
-- $H_a$: Smoking has an impact on stroke occurrence.
+- *H<sub>0</sub>*: Smoking does not have an impact on stroke occurrence.
+- *H<sub>a</sub>*: Smoking has an impact on stroke occurrence.
 
 ### Hypothesis 4: Men and women have different stroke occurrence rates.
-- $H_0$: Men and women do not have different stroke occurrence rates.
-- $H_a$: Men and women have different stroke occurrence rates.
+- *H<sub>0</sub>*: Men and women do not have different stroke occurrence rates.
+- *H<sub>a</sub>*: Men and women have different stroke occurrence rates.
 
 ### 2. Findings
 #### Our findings are: Initial Hypotheses - Combined Results
