@@ -1,5 +1,7 @@
 # Stroke Prediction
 
+![This is an image](https://i.imgur.com/mgshv8S.jpg)
+
 ### Table of Contents
 ---
 
