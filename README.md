@@ -60,7 +60,7 @@ This project was created by the Stroke Prediction team from Codeup's Germain dat
 - Slides for project presentation.
 - Final Report Notebook detailing all of the team's findings and methodologies.
 - Sections indicated with markdown headings in the team's final notebook with a good title and the documentation is sufficiently explanatory and of high quality.
-- A Python module or modules that automate the data acquisistion and preparation process, imported and used in final notebook.
+- A Python module or modules that automates the data acquisition and preparation process, imported and used in final notebook.
 - README file that details the project specs, planning, key findings, and steps to reproduce.
 - Presentation by the team on the findings that is under 10 minutes.
 
@@ -119,7 +119,7 @@ ___
 #### 3. How to use it
 
 - Run the risk_calculator.py file in command line or terminal.
-- Imput the answers to the questions. 
+- Input the answers to the questions. 
 - Program returns a calculated risk percentage.
 
 ---
@@ -268,6 +268,6 @@ To recreate and reproduce results of this project, you will need to:
    - conda install -c conda-forge imbalanced-learn
 - Run the final_notebook.ipynb notebook
 
-** The dataset was downloaded from the website https://www.kaggle.com/fedesoriano/stroke-prediction-dataset on 11/15/2021. The orginial data set may have changed since we completed the project.**
+** The dataset was downloaded from the website https://www.kaggle.com/fedesoriano/stroke-prediction-dataset on 11/15/2021. The original data set may have changed since we completed the project.**
 
 [[Return to Top]](#stroke-prediction)
