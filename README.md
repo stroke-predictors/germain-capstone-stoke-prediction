@@ -1,5 +1,7 @@
 # Stroke Prediction
 
+![This is an image](https://i.imgur.com/mgshv8S.jpg)
+
 ### Table of Contents
 ---
 
@@ -9,19 +11,25 @@ I.   [Project Overview             ](#i-project-overview)
 3.   [Team Members                 ](#3-team-members)
 
 II.  [Executive Summary             ](#ii-executive-summary)
-1.   [Goals:                        ](#1-goals)
-2.   [Key Findings:                 ](#2-key-findings)
-3.   [Recommendations:              ](#3-recommendations)
+1.   [Goals                         ](#1-goals)
+2.   [Key Findings                  ](#2-key-findings)
+3.   [Recommendations               ](#3-recommendations)
+4.   [Our Next Steps                ](#4-our-next-steps)
 
-III. [Project                      ](#iii-project)
-1.   [Questions & Hypothesis       ](#1-questions--hypothesis)
+III. [Our Data Product: Stroke Risk Calculator](#iii-Our-Data-Product-Stroke-Risk-Calculator)
+1.   [Overview                     ](#1-overview)
+2.   [How it works                 ](#2-how-it-works?)
+3.   [How to use it                ](#3-how-to-use-it)
+
+IV.  [Project                      ](#iii-project)
+1.   [Hypotheses                   ](#1-hypotheses)
 2.   [Findings                     ](#2-findings)
 3.   [Model Takeaways              ](#3-model-takeaways)
 
-IV.  [Data Context                 ](#iv-data-context)
+V.   [Data Context                 ](#iv-data-context)
 1.   [Data Dictionary              ](#1-data-dictionary)
 
-V.   [Process                      ](#v-process)
+VI.  [Process                      ](#v-process)
 1.   [Project Planning             ](#1-project-planning)
 2.   [Data Acquisition             ](#2-data-acquisition)
 3.   [Data Preparation             ](#3-data-preparation)
@@ -29,9 +37,9 @@ V.   [Process                      ](#v-process)
 5.   [Modeling & Evaluation        ](#5-modeling--evaluation)
 6.   [Product Delivery             ](#6-product-delivery)
 
-VI.   [Modules                      ](#vi-modules)
+VII.   [Modules                      ](#vi-modules)
 
-VII.  [Project Reproduction         ](#vii-project-reproduction)
+VIII.  [Project Reproduction         ](#vii-project-reproduction)
 
 <br>
 
@@ -42,19 +50,17 @@ VII.  [Project Reproduction         ](#vii-project-reproduction)
 
 #### 1. Description
 
+Did you know, **every 40 seconds** someone in the United States has a stroke and **every 4 minutes**, someone dies of stroke? Our team wants to reduce these numbers.
 
-Did you know, every 40 seconds someone in the United States has a stroke and every 4 minutes, someone dies of stroke. Our team wants to reduce these numbers. We want to identify key drivers of stroke and model accurate predictions that mitigate future occurrences of this disease.
+This project was created by the Stroke Prediction team from Codeup's Germain data science cohort. The project analyzes a stroke prediction dataset in an attempt to find the drivers of stroke and build a model that predicts stroke outcomes. The analysis from this project is used in our Stroke Risk Calculator, which incorporates our best model and generates a risk percentage for a user's inputs.
 
-Identify stroke factors, using the stroke prediction dataset from Kaggle, build a predictive model that performs better than a baseline classification prediction.
-
-This notebook was created by the Stroke Prediction team from Codeup's Germain data science cohort. The notebook analyzes a stroke prediction dataset in an attempt to find the drivers of stroke and build a model that predicts stroke outcomes. The analysis from this notebook is used in our Stroke Risk Calculator, which incorporates our best model and generates a risk percentage for a user's inputs.
 
 #### 2. Deliverables
 
 - Slides for project presentation.
 - Final Report Notebook detailing all of the team's findings and methodologies.
 - Sections indicated with markdown headings in the team's final notebook with a good title and the documentation is sufficiently explanatory and of high quality.
-- A Python module or modules that automate the data acquisition and preparation process, imported and used in final notebook.
+- A Python module or modules that automate the data acquisistion and preparation process, imported and used in final notebook.
 - README file that details the project specs, planning, key findings, and steps to reproduce.
 - Presentation by the team on the findings that is under 10 minutes.
 
@@ -69,75 +75,94 @@ This notebook was created by the Stroke Prediction team from Codeup's Germain da
 ### II. Executive Summary
 ---
 
-#### 1. Goals:
+#### 1. Goals
 
-- 1. Determine the drivers of stroke risk
-- 2. Create an accurate predictive model for stroke outcomes
-- 3. Deliver a production-ready stroke risk calculator
+1. Determine the drivers of stroke risk
+2. Create an accurate predictive model for stroke outcomes
+3. Predict the probability of stroke
+4. Deliver a production-ready stroke risk calculator
 
-- Incorporate classification methodologies and discover potential drivers of stroke using eleven clinical features for predicting stroke events
-- Discover features to eliminate as key drivers of stroke
+<!-- - Incorporate classification methodologies and discover potential drivers of stroke using eleven clinical features for predicting stroke events.
 - Create modules storing functions of each step of the data pipeline
 - Thoroughly document each step
 - Construct models
-- Make sure project is reproduceable
+- Make sure project is reproduceable -->
 
-#### 2. Key findings:
+#### 2. Key findings
 
-- Drivers of stroke risk: Old age, Hyperglycemia/high glucose levels, hypertension, heart disease, marriage under 55 years old: never having married over 55 years old
-- Non-Drivers: BMI, Gender, Residence location, Smoking status, Employment type
-- Best model's performance: Recall: 83%, Accuracy: 65%, ROC AUC: 85%
+- **Drivers of stroke risk:** Old age; Hyperglycemia/high glucose levels; hypertension; heart disease; marriage under 55 years old: never having married over 55 years old
+- **Non-Drivers:** BMI; Gender; Residence location; Smoking status; Employment type
+- **Best model's performance:** Recall: 83%, Accuracy: 65%, ROC AUC: 85%
 
-#### 3. Recommendations:
-
+#### 3. Recommendations
 - People who fall into the high-risk categories we've found should consult with their doctor to get screened
-- People can use our risk calculator to check their risk of stroke (given the considered features)
+- People can use our risk calculator to check their risk of stroke
 
-- With additional time: We would collect more records to train our model and conduct further multivariate analysis.
+#### 4. Our Next Steps
+- With additional time, we would collect more records to train our model and conduct further multivariate analysis.
+
+___
+
+### III. Our Data Product: Stroke Risk Calculator
+![This is an image](https://i.imgur.com/7xpF89F.png)
+
+#### 1. Overview
+
+- Provide users with a score indicating stroke risk where higher numbers are higher risk
+- Uses our best model to calculate the risk score
+
+#### 2. How it works?
+- Re-creates the best-performing model from the Stroke Prediction team's analysis and fits it on the data used in the analysis.
+- Uses sklearn's predict_proba method to calculate the risk of stroke
+- Finally it returns the calculated number that indicates a percentage of risk for stroke.
+
+#### 3. How to use it
+
+- Run the risk_calculator.py file in command line or terminal.
+- Imput the answers to the questions. 
+- Program returns a calculated risk percentage.
 
 ---
 
 ### III. Project
 
-#### 1. Questions & Hypothesis
+### 1. Hypotheses
 
-- What age group is most at risk?
+<!-- - What age group is most at risk?
 - What drivers affect stroke?
 - Are people over 65 significantly more likely to have a stroke?
 - Are men more likely to have strokes?
-- What pre-existing conditions have a correlation to a stroke?  (hypertension, heart_disease)
+- What pre-existing conditions have a correlation to a stroke?  (hypertension, heart_disease) -->
 
-## Initial Hypotheses
-### Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
-- Ho: An increase in BMI does not correspond with an increase in average glucose level.
-- Ha: An increase in BMI corresponds with an increase in average glucose level.
+### Initial Hypotheses
+#### Hypothesis 1: On average, an increase in BMI corresponds with an increase in average glucose level.
+- *H<sub>0</sub>*: An increase in BMI does not correspond with an increase in average glucose level.
+- *H<sub>a</sub>*: An increase in BMI corresponds with an increase in average glucose level.
 
-### Hypothesis 2: On average, a person who has had a stroke is older than someone who has not.
-- Ho: A person who has had a stroke is not statistically-significantly older than someone who has not.
-- Ha: A person who has had a stroke is statistically-significantly older than someone who has not.
+#### Hypothesis 2: On average, a person who has had a stroke is older than someone who has not.
+- *H<sub>0</sub>*: A person who has had a stroke is not statistically-significantly older than someone who has not.
+- *H<sub>a</sub>*: A person who has had a stroke is statistically-significantly older than someone who has not.
 
-### Hypothesis 3: Smoking has an impact on stroke occurrence.
-- Ho: Smoking does not have an impact on stroke occurrence.
-- Ha: Smoking has an impact on stroke occurrence.
+#### Hypothesis 3: Smoking has an impact on stroke occurrence.
+- *H<sub>0</sub>*: Smoking does not have an impact on stroke occurrence.
+- *H<sub>a</sub>*: Smoking has an impact on stroke occurrence.
 
-### Hypothesis 4: Men and women have different stroke occurrence rates.
-- Ho: Men and women do not have different stroke occurrence rates.
-- Ha: Men and women have different stroke occurrence rates.
+#### Hypothesis 4: Men and women have different stroke occurrence rates.
+- *H<sub>0</sub>*: Men and women do not have different stroke occurrence rates.
+- *H<sub>a</sub>*: Men and women have different stroke occurrence rates.
 
 ### 2. Findings
 #### Our findings are: Initial Hypotheses - Combined Results
 
 - We are 95% confident that an increase in BMI corresponds with an increase in average glucose level.
 - We are 95% confident that people who have had a stroke are older on average than people who have not.
-- We are 95% confident that smoking has an impact on stroke occurrence.(We could not however say that there was enough difference in the sample population to suggest which class of smoker was at a different risk than the resk other than the most obvious non-smoker)
+- We can't say with 95% confidence that smoking has an impact on stroke occurrence. 
 - We can't say with 95% confidence that men and women have different stroke occurrence rates.
 
 ### 3. Model Takeaways:
 
-- Our best model was Naive-Bayes with var_smoothing of 0.00001
-- We outperformed the baseline in OutSample_Accuracy
-- manual_baseline OutSample_Accuracy = 0.043053, outSample_recall = 1.00
-- nb_best_model OutSample_Accuracy = 0.83953, OutSample_Recall = 0.37037
+- Baseline (Always Guess Stroke) Performance: Accuracy 5%, Recall 100%, ROC AUC 50%
+- Our Best Model (Gaussian Naive-Bayes) Performance: Accuracy 65%, Recall 83%, ROC AUC 85%
 
 ### IV. Data Context
 ---
@@ -243,8 +268,6 @@ To recreate and reproduce results of this project, you will need to:
    - conda install -c conda-forge imbalanced-learn
 - Run the final_notebook.ipynb notebook
 
-** The dataset was downloaded from the website https://www.kaggle.com/fedesoriano/stroke-prediction-dataset on 11/15/2021. The orginal data set may have changed since we completed the project.**
-
+** The dataset was downloaded from the website https://www.kaggle.com/fedesoriano/stroke-prediction-dataset on 11/15/2021. The orginial data set may have changed since we completed the project.**
 
 [[Return to Top]](#stroke-prediction)
-
